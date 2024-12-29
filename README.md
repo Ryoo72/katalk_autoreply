@@ -1,10 +1,12 @@
 # 💬 어디에 쓰는 물건인가?
 
+이 레포지토리는 카카오톡 자동 응답을 해줍니다.
+
 <p align="center">
 <img width="50%" src="./assets/arch.png"/>
 </p> 
 
-이 레포지토리는 카카오톡 자동 응답을 해줍니다.
+카카오톡 자동응답은 VLM 의 성능 확인을 위한 최적의 데모가 될 수 있습니다. OCR, 다국어(한국어)지원, 문맥파악, 생성, 할루시네이션 등 복합적 요소들이 모두 제 성능을 발휘해야 하기 때문입니다.
 
 # 🔎 어떻게 쓰는 물건인가?
 
@@ -20,18 +22,26 @@ echo "ANTHROPIC_API_KEY={PUT YOUR ANTHROPIC KEY HERE}" > .env
 
 **2. `requirements.txt` 가 제공되지 않으니 패키지를 적절히 다운 받아주세요.**
 
-**3. `config.json` 을 고쳐주세요.16인치 맥북이면 안바꿔도 됩니다.**
+**3. `config.json` 을 고쳐주세요. 16인치 맥북이면 카톡창을 왼쪽 반절에 위치시키면 안바꿔도 됩니다.**
 - `monitor_region` 는 다음과 같이 생겼어야 합니다.
+  - 동적인 이모티콘이나 이미지에 대응하기 위해 프로필 사진의 위치 변화만 감지합니다.
+    
 <p align="center">
-<img width="50%" src="./assets/mon_reg.png"/>
+<img width="2%" src="./assets/mon_reg.png"/>
 </p> 
 
 - `capture_region` 는 다음과 같이 생겼어야 합니다.
+  - 채팅창 전체가 찍혀야합니다.
 <p align="center">
 <img width="50%" src="./assets/cap_reg.png"/>
 </p>
 
 - `input_coords` 는 채팅입력칸 아무데나의 좌표를 넣어주시면 됩니다.
+
+**3. 파이썬 파일을 실행해주세요.**
+```bash
+python multithread_reply.py
+```
 
 # 🙋 질문이 있습니다.
 - **작동하지 않아요.**
