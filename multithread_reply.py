@@ -43,7 +43,7 @@ class GeneratorThread(threading.Thread):
         self.use_gpt = False
         self.pattern = r"<response>(.*?)</response>"
     
-        self.prompt = "주어진 이미지는 카카오톡 채팅앱의 캡쳐 화면이다. 왼편 흰 말풍선 채팅들은 상대방의 메세지이고, 오른편 노란 말풍선 채팅들은 user의 메세지이다. 이 채팅에 기반해 적절한 user의 답변을 생성해라. 채팅 참여자들의 모든 것을 고려해 가장 **자연스러운** 답변을 생성하는 것이 가장 중요한 목표이다. 또한 다음 사항을 지켜라.\n- 맥락과 콘텍스트에 맞는 답변을 해라. 기존 user의 말투를 유지하고 흉내내라.\n- 존댓말 혹은 반말을 적절하게 선택하고, 존댓말 사용여부를 판단해 <honorific> 태그에 넣어라.\n- 답변은 되도록이면 짧게 유지해라.\n- 생성할 답장은 오른편의 text를 보내는 user의 메세지임을 명심해라.\n- 무슨 상황에든 어떠한 말이라도 반드시 답변해야한다.\n- emoji는 되도록 사용하지말아라.\n- <response> 안에는 답변 외의 다른 말을 넣지 말아라.\n- 진짜 사람이 보낸 것 같은 답변 처럼 보이기 위해 필요할 경우 <response> 태그를 여러개 사용해 답변을 여러개의 메세지로 나눠라.\n- 대화가 끊기지 않도록 하되 상대방이 대화의 흥미를 잃지 않도록 유도하라.(먼저 질문을 던지는 등.)\n\n다음 지시 사항을 수행하라.\n우선, 이미지에 주어진 글을 읽고, 그 뒤 어떻게 답변해야 가장 자연스러울지 생각해라. 그 다음, 다음과같은 format으로 답변을 작성하라: <messages>Read the message text and write it here.</messages><context>Analyze the context and put it here.</context><honorific>존댓말 or 반말</honorific><response>put response here</response><response>Second reponse as needed</response></end>"
+        self.prompt = "주어진 이미지는 카카오톡 채팅앱의 캡쳐 화면이다. 왼편 흰 말풍선 채팅들은 상대방의 메세지이고, 오른편 노란 말풍선 채팅들은 user의 메세지이다. 이 채팅에 기반해 적절한 user의 답변을 생성해라. 채팅 참여자들의 모든 것을 고려해 가장 **자연스러운** 답변을 생성하는 것이 가장 중요한 목표이다. 또한 다음 사항을 지켜라.\n- 맥락과 콘텍스트에 맞는 답변을 해라. 기존 user의 말투를 유지하고 흉내내라.\n- 존댓말 혹은 반말을 적절하게 선택하고, 존댓말 사용여부를 판단해 <honorific> 태그에 넣어라.\n- 답변은 되도록이면 짧게 유지해라.\n- 생성할 답장은 오른편의 text를 보내는 user의 메세지임을 명심해라.\n- 무슨 상황에든 어떠한 말이라도 반드시 답변해야한다.\n- emoji는 되도록 사용하지말아라.\n- <response> 안에는 답변 외의 다른 말을 넣지 말아라.\n- 진짜 사람이 보낸 것 같은 답변 처럼 보이기 위해 필요할 경우 <response> 태그를 여러개 사용해 답변을 여러개의 메세지로 나눠라.\n- 대화가 끊기지 않도록 하되 상대방이 대화의 흥미를 잃지 않도록 유도하라.(먼저 질문을 던지는 등.)\n\n다음 지시 사항을 수행하라.\n우선, 이미지에 주어진 글을 읽고, 그 뒤 어떻게 답변해야 가장 자연스러울지 생각해라. 그 다음, 다음과 같은 format으로 답변을 작성하라: <messages>Read the message text and write it here.</messages><context>Analyze the context and put it here.</context><honorific>존댓말 or 반말</honorific><response>put response here</response><response>Second reponse as needed</response></end>"
 
         self.print_c = "green"
 
@@ -446,14 +446,7 @@ if __name__ == "__main__":
     if is_debugging:
         debug = DebuggerThread(capture_q, message_q, before_q, sct, config)
         debug.start()
-
-    # generator = KakaoTalkBot(message_q)
-    # sender = MessageSender(message_q)
-    # generator.start()
-    # sender.start()
-    # print(bot.capture_and_generate())
-
-
+        
     # {"type": "text", "text": """
                             # The given image is part of a chat conversation. The text with white background on the left is from the other person, and the text with yellow background on the right is from the user. Generate an appropriate user response based on this image. You must generate the most natural response by comprehensively considering everything about the chat participants, including their age, characteristics, personality, etc. You must not generate any other text besides the response. The response should not be verbose, and being natural like a real person is the most important thing. Pay attention to whether formal or informal language should be used. Remember that you are generating the user's response to the person who sent the text on the left. You **MUST** provide some kind of response no matter what.
                             # """},
