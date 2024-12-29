@@ -1,3 +1,5 @@
+legacy/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -160,6 +162,10 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+*.jpg
+*.jpeg
+*.png
+
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
@@ -168,4 +174,8 @@ cython_debug/
 #.idea/
 
 # PyPI configuration file
+<<<<<<< HEAD
 .pypirc
+=======
+.pypirc
+>>>>>>> 8183059 (first)
