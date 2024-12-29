@@ -22,7 +22,7 @@ echo "ANTHROPIC_API_KEY={PUT YOUR ANTHROPIC KEY HERE}" > .env
 
 **2. `requirements.txt` 가 제공되지 않으니 패키지를 적절히 다운 받아주세요.**
 
-**3. `config.json` 을 고쳐주세요.16인치 맥북이면 안바꿔도 됩니다.**
+**3. `config.json` 을 고쳐주세요. 16인치 맥북이면 카톡창을 왼쪽 반절에 위치시키면 안바꿔도 됩니다.**
 - `monitor_region` 는 다음과 같이 생겼어야 합니다.
   - 동적인 이모티콘이나 이미지에 대응하기 위해 프로필 사진의 위치 변화만 감지합니다.
     
